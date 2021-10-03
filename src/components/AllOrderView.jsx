@@ -1,24 +1,24 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import '../styles/AllStyles.css';
 import OrderListHolder from "./OrderListHolder";
-
-const values =[
-    {
-        material:"sand",
-        budget:1000,
-        status:'pending',
-        seller:'seller 1'
-    },
-    {
-        material:"brick",
-        budget:2000,
-        status:'processing',
-        seller:'seller 2'
-    }
-]
-
+import OrderService from "../services/OrderService";
 
 const AllOrderView = () => {
+    const [orders, setOrders] = useState([])
+
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    const fetchData = () => {
+        OrderService.getOrders()
+        .then(orders =>{
+            setOrders(orders);
+        }).catch((err) => {
+            console.error(err);
+        });
+    }
 
     const onPress = () => {
         console.log('pressed')
@@ -41,8 +41,10 @@ const AllOrderView = () => {
                   </div>
                   <div id={'miniDiv'}>
                       {
-                          values.map(value =>{
-                              return <OrderListHolder leftLabel={value.material} middleLabel1={value.budget} middleLabel2={value.status} rightLabel={value.seller} onPress={onPress}/>
+                          orders.map(order => {
+                              return <OrderListHolder leftLabel={order.material} middleLabel1={order.budget}
+                                                      middleLabel2={order.status} rightLabel={order.seller}
+                                                      onPress={onPress}/>
                           })
                       }
                   </div>
