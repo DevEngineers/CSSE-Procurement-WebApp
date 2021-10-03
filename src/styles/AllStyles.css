@@ -1,0 +1,79 @@
+/*
+**************************************************************
+  @author :Akeel M.N.M
+  Registration Number : IT19153414
+************************************************************
+*/
+
+#largeDiv {
+    width: 60%;
+    padding: 20px;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    background-color: #f4f7f8;
+    margin-left: 25px;
+}
+
+.box {
+    position: relative;
+    height: 80px;
+    display: inline-block;
+    margin: 30px 0 0 25px;
+}
+
+.custom-underline {
+    position: relative;
+    display: inline-block;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+}
+
+#viewMain {
+    border-style: groove;
+    height: 40px;
+    border-radius: 5px;
+}
+
+#miniDiv{
+    height: 300px;
+    padding: 10px;
+    background-color: white;
+    border-style: groove;
+}
+
+#headingDiv{
+    height: 15px;
+    padding: 20px;
+}
+
+#heading{
+    padding: 10px;
+    float: left;
+}
+
+#heading2{
+    padding: 10px;
+    margin-left: 325px;
+    float: left;
+}
+#heading3{
+    padding: 10px;
+    float: right;
+}
+
+#labelName{
+    padding: 10px;
+    float: left;
+}
+
+#labelName2{
+    padding: 10px;
+    margin-left: 350px;
+    float: left;
+}
+#labelName3{
+    padding: 10px;
+    float: right;
+}
