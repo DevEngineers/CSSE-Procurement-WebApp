@@ -11,14 +11,14 @@
     box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
     font-family: Georgia, "Times New Roman", Times, serif;
     background-color: #f4f7f8;
-    margin-left: 25px;
+    margin-left: 270px;
 }
 
 .box {
     position: relative;
     height: 80px;
     display: inline-block;
-    margin: 30px 0 0 25px;
+    margin: 30px 0 0 270px;
 }
 
 .custom-underline {
@@ -34,6 +34,7 @@
     border-style: groove;
     height: 40px;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 #miniDiv{
@@ -49,18 +50,28 @@
 }
 
 #heading{
-    padding: 10px;
+    padding: 5px;
     float: left;
+    font-weight: bold;
 }
 
 #heading2{
-    padding: 10px;
-    margin-left: 325px;
+    padding: 5px;
+    margin-left: 180px;
     float: left;
+    font-weight: bold;
 }
 #heading3{
-    padding: 10px;
+    padding: 5px;
+    float: left;
+    margin-left: 180px;
+    font-weight: bold;
+}
+
+#heading4{
+    padding: 5px;
     float: right;
+    font-weight: bold;
 }
 
 #labelName{
@@ -70,10 +81,129 @@
 
 #labelName2{
     padding: 10px;
-    margin-left: 350px;
+    margin-left: 215px;
     float: left;
 }
 #labelName3{
     padding: 10px;
+    margin-left: 200px;
+    float: left;
+}
+
+#labelName4{
+    padding: 10px;
     float: right;
+}
+
+/* ---------------------- Decline order page styles ---------------------------------------*/
+
+#mainFormDiv{
+    width: 60%;
+    height: 350px;
+    margin-left: 270px;
+    background-color: #f4f7f8;
+    box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+}
+
+.form-style-resWork{
+    width: 400px;
+    padding: 10px 20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    float: left;
+    margin:0 0 0 10px;
+}
+.form-style-resWork fieldset{
+    border: none;
+}
+.form-style-resWork legend {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+.form-style-resWork label {
+    display: block;
+    margin-bottom: 8px;
+}
+.form-style-resWork input[type="text"],
+.form-style-resWork input[type="date"],
+.form-style-resWork input[type="file"],
+.form-style-resWork textarea,
+.form-style-resWork select {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    outline: 0;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background: #e6e6e6;
+    color: #63686e;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin: 0 0 30px;
+}
+.form-style-resWork input[type="text"]:focus,
+.form-style-resWork input[type="date"]:focus,
+.form-style-resWork select:focus{
+    background: #e6e6e6;
+}
+.form-style-resWork select{
+    -webkit-appearance: menulist-button;
+    height:35px;
+}
+.form-style-resWork .number {
+    background: #1abc9c;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 4px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    border-radius: 15px 15px 15px 0;
+}
+
+#btnSub {
+    position: relative;
+    display: block;
+    padding: 9px 29px 8px 29px;
+    color: #FFF;
+    background: #6dabe4;
+    font-size: 16px;
+    text-align: center;
+    font-style: normal;
+    width: 20%;
+    border: 1px solid #62a1e0;
+    border-radius: 3px;
+    margin: -37px 150px 0 450px;
+    float: left;
+}
+#btnSub:hover{
+    background: #62a1e0;
+    cursor: pointer;
+}
+
+#btnCancel{
+    position: relative;
+    display: block;
+    padding: 9px 29px 8px 29px;
+    color: #FFF;
+    background: orangered;
+    font-size: 16px;
+    text-align: center;
+    font-style: normal;
+    width: 15%;
+    border: 1px solid orangered;
+    border-radius: 3px;
+    margin-left: 300px;
+}
+
+#btnCancel:hover{
+    background: orangered;
+    cursor: pointer;
 }
