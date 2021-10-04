@@ -188,6 +188,26 @@
     cursor: pointer;
 }
 
+#btnSub02 {
+    position: relative;
+    display: block;
+    padding: 9px 29px 8px 29px;
+    color: #FFF;
+    background: #6dabe4;
+    font-size: 16px;
+    text-align: center;
+    font-style: normal;
+    width: 20%;
+    border: 1px solid #62a1e0;
+    border-radius: 3px;
+    margin: -37px 150px 0 620px;
+    float: left;
+}
+#btnSub02:hover{
+    background: #62a1e0;
+    cursor: pointer;
+}
+
 #btnCancel{
     position: relative;
     display: block;
