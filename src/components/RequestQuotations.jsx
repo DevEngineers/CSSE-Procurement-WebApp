@@ -1,7 +1,23 @@
 import React, {useEffect, useState} from "react";
 import '../styles/AllStyles.css';
 import OrderService from "../services/OrderService";
+import {toast, ToastContainer} from "material-react-toastify";
+import QuotationService from "../services/QuotationService";
 
+/**
+ * @author : A.M Zumry
+ * Registration Number : IT19175126
+ */
+
+//Toast Message Configuration
+const options = {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: false
+}
 
 const RequestQuotations = (props) => {
     const ID = props.match.params.id;
@@ -31,25 +47,39 @@ const RequestQuotations = (props) => {
     }
 
     const sendQuotation = (event) =>{
-        event.preventDefault()
+        event.preventDefault();
 
-        OrderService.declineOrder(ID)
+        let Quotation = {
+            quotationID:"QUOT01",
+            procumentManagerID:"PRO01",
+            orderID:"OR01",
+            date: Date().toLocaleString(),
+            description:"description",
+            budget:"",
+            status:"padding"
+        }
+
+        QuotationService.addQuotation(Quotation)
             .then(response =>{
                 if (response.status === 200) {
-                    console.log("Successfully order Declined");
+                    toast.success("Successfully Quotation Request Send");
+                    console.log("Successfully Quotation Request Send");
                     setTimeout(() => {
-                        this.props.history.push("/");
+                        this.props.history.push("/all");
                     }, 3000);
                 } else {
                     throw Error("Something went wrong!! Try again.");
                 }
             }).catch((err) => {
+            toast.error(err.message, options)
             console.error(err);
         });
+
     }
 
     return (
         <div>
+            <ToastContainer/>
             <div>
                 <div>
                     <div className={"box"}>
