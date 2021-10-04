@@ -1,9 +1,9 @@
-const ORDER_API_BASE_URI = "http://localhost:8080/researchPaper";
+const ORDER_API_BASE_URI = "http://localhost:8080/procurmentManager";
 
 class OrderService{
 
     /**
-     *  This service function is to Get All Research paper submission from backend
+     *  This service function is to Get get Orders backend
      */
     async getOrders(){
         return await fetch(ORDER_API_BASE_URI+"/",{
@@ -17,7 +17,7 @@ class OrderService{
     }
 
     /**
-     *  This service function is to get the Research paper submission of specific user from backend
+     *  This service function is to get the order by id from backend
      */
     async getOrderByID(id){
         return await fetch(ORDER_API_BASE_URI+"/"+id,{
@@ -31,15 +31,24 @@ class OrderService{
     }
 
     /**
-     *  This service function is to update stored Research paper submission in backend
+     *  This service function is to approve order
      */
-    async updateOrder(id,order){
-        return await fetch(ORDER_API_BASE_URI+"/"+id,{
-            method:'PUT',
-            headers:{
-                'content-Type':"application/json"
-            },
-            body:JSON.stringify(order)
+    async approveOrder(id){
+        return await fetch(ORDER_API_BASE_URI+"/approve/"+id,{
+            method:'GET',
+        }).then(response =>{
+            return response;
+        }).catch(reason => {
+            return reason;
+        })
+    }
+
+    /**
+     *  This service function is to approve order
+     */
+    async declineOrder(id){
+        return await fetch(ORDER_API_BASE_URI+"/decline/"+id,{
+            method:'GET',
         }).then(response =>{
             return response;
         }).catch(reason => {

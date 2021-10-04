@@ -32,16 +32,8 @@ const DeclineOrder = (props) => {
 
     const declineOrder = (event) =>{
         event.preventDefault()
-        let Order = {
-            material:material,
-            deadLine:deadLine,
-            declineReason:declineReason,
-            quantity:quantity,
-            site:site,
-            declineDate:declineDate
-        }
 
-        OrderService.updateOrder(id,Order)
+        OrderService.declineOrder(id)
         .then(response =>{
             if (response.status === 200) {
                 console.log("Successfully order Declined");
