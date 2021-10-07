@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
 import '../styles/AllStyles.css';
-import OrderListHolder from "./OrderListHolder";
 import OrderService from "../services/OrderService";
+import {useHistory} from "react-router-dom";
 
 const AllPaddingHightBudgetView = () => {
+    const history = useHistory();
     const [orders, setOrders] = useState([])
 
     useEffect(() => {
@@ -11,16 +12,20 @@ const AllPaddingHightBudgetView = () => {
     }, [])
 
     const fetchData = () => {
+        console.log("fetchData");
         OrderService.getOrders()
             .then(orders =>{
                 setOrders(orders);
+                console.log("orders",orders);
             }).catch((err) => {
             console.error(err);
         });
     }
 
-    const onPress = () => {
-        console.log('pressed')
+    const onPress = (order) => {
+        let id = order.orderId;
+        console.log('pressed orderId : ',id);
+        history.push(`/quotation/${id}`);
     }
 
     return (
@@ -34,17 +39,24 @@ const AllPaddingHightBudgetView = () => {
                 <div id={"largeDiv"}>
                     <div id={'headingDiv'}>
                         <label id={'heading'}>Material</label>
-                        <label id={'heading2'}>Budget</label>
-                        <label id={'heading3'}>Order Status</label>
-                        <label id={'heading4'}>Seller</label>
+                        <label id={'heading2'}>Quantity</label>
+                        <label id={'heading3'}>Budget</label>
+                        <label id={'heading4'}>Order Status</label>
                     </div>
                     <div id={'miniDiv'}>
-                        {
+                        {orders.length > 0 ?
                             orders.map(order => {
-                                return <OrderListHolder leftLabel={order.material} middleLabel1={order.budget}
-                                                        middleLabel2={order.status} rightLabel={order.seller}
-                                                        onPress={onPress}/>
-                            })
+                                return(
+                                    <div onClick={() => onPress(order)} id={"viewMain"}>
+                                        <div id={"viewDiv"}>
+                                            <label id={'labelName'}>{order.item}</label>
+                                            <label id={'labelName2'}>{order.quantity}</label>
+                                            <label id={'labelName3'}>{order.totalCost}.00</label>
+                                            <label id={'labelName4'}>{order.status}</label>
+                                        </div>
+                                    </div>
+                                )})
+                            : <div>No data found</div>
                         }
                     </div>
                 </div>

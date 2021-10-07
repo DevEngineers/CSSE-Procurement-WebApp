@@ -3,6 +3,7 @@ import '../styles/AllStyles.css';
 import OrderService from "../services/OrderService";
 import {toast, ToastContainer} from "material-react-toastify";
 import QuotationService from "../services/QuotationService";
+import {useHistory} from "react-router-dom";
 
 /**
  * @author : A.M Zumry
@@ -21,6 +22,9 @@ const options = {
 
 const RequestQuotations = (props) => {
     const ID = props.match.params.id;
+    const history = useHistory();
+    const quotationID = "Q02";
+    const procurementManagerID = "PR02";
     const [material,setMaterial] = useState('');
     const [deadLine,setDeadLine] = useState('');
     const [estimatedCost,setEstimatedCost] = useState('');
@@ -36,11 +40,11 @@ const RequestQuotations = (props) => {
         OrderService.getOrderByID(ID)
             .then(response =>{
                 setMaterial(response.quantity);
-                setDeadLine(response.deadLine);
-                setEstimatedCost(response.estimatedCost);
+                setDeadLine(response.deadline);
+                setEstimatedCost(response.totalCost);
                 setQuantity(response.quantity);
                 setDescription(response.description);
-                setSite(response.site);
+                setSite(response.deliverySite);
             }).catch((err) => {
             console.error(err);
         });
@@ -50,25 +54,26 @@ const RequestQuotations = (props) => {
         event.preventDefault();
 
         let Quotation = {
-            quotationID:"QUOT01",
-            procumentManagerID:"PRO01",
-            orderID:"OR01",
+            quotationID:quotationID,
+            procumentManagerID: procurementManagerID,
+            orderID:ID,
             date: Date().toLocaleString(),
-            description:"description",
-            budget:"",
+            description:description,
+            budget:" ",
             status:"padding"
         }
 
         QuotationService.addQuotation(Quotation)
-            .then(response =>{
-                if (response.status === 200) {
+            .then(res =>{
+                console.log("response : ",res);
+                if (res.status === 200) {
                     toast.success("Successfully Quotation Request Send");
                     console.log("Successfully Quotation Request Send");
                     setTimeout(() => {
-                        this.props.history.push("/all");
+                        history.push("/all");
                     }, 3000);
                 } else {
-                    throw Error("Something went wrong!! Try again.");
+                    toast.error( Error("Something went wrong!! Try again."));
                 }
             }).catch((err) => {
             toast.error(err.message, options)
@@ -94,7 +99,7 @@ const RequestQuotations = (props) => {
                         </div>
                         <div>
                             <label>Deadline</label>
-                            <input type={'date'} value={deadLine} required onChange={event => setDeadLine(event.target.value)}/>
+                            <input type={'text'} value={deadLine} required onChange={event => setDeadLine(event.target.value)}/>
                         </div>
                         <div>
                             <label>Estimated Cost</label>
