@@ -15,7 +15,7 @@ function App() {
           <Switch>
               <Route exact path="/" component={DeclineOrder}/>
               <Route exact path="/l" component={AllOrderView}/>
-              <Route exact path="/Quotation" component={RequestQuotations}/>
+              <Route exact path="/quotation/:id" component={RequestQuotations}/>
               <Route exact path="/all" component={AllPaddingHightBudgetView}/>
           </Switch>
           <Footer/>
