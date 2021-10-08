@@ -40,7 +40,7 @@ const RequestQuotations = (props) => {
     const fetchData = () =>{
         OrderService.getOrderByID(ID)
             .then(response =>{
-                setMaterial(response.quantity);
+                setMaterial(response.item);
                 setDeadLine(response.deadline);
                 setEstimatedCost(response.totalCost);
                 setQuantity(response.quantity);
@@ -104,7 +104,7 @@ const RequestQuotations = (props) => {
                         </div>
                         <div>
                             <label>Estimated Cost</label>
-                            <input type={'text'} value={quantity} onChange={event => setEstimatedCost(event.target.value)} required/>
+                            <input type={'text'} value={estimatedCost+'.00'} onChange={event => setEstimatedCost(event.target.value)} required/>
                         </div>
                     </div>
                     <div className={'form-style-resWork'}>
