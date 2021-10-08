@@ -4,6 +4,7 @@ import OrderService from "../services/OrderService";
 import {toast, ToastContainer} from "material-react-toastify";
 import QuotationService from "../services/QuotationService";
 import {useHistory} from "react-router-dom";
+import moment from 'moment';
 
 /**
  * @author : A.M Zumry
@@ -57,7 +58,7 @@ const RequestQuotations = (props) => {
             quotationID:quotationID,
             procumentManagerID: procurementManagerID,
             orderID:ID,
-            date: Date().toLocaleString(),
+            date: moment(Date().toLocaleString()).format("YYYY-MM-DD"),
             description:description,
             budget:" ",
             status:"padding"
